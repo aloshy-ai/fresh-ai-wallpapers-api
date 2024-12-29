@@ -44,7 +44,7 @@ Deno.serve(async (req) => {
 
           // Upsert the image into Supabase
           const { error: upsertError } = await supabaseClient
-            .from('public.images')
+            .from('images')
             .upsert({ id: image.id, url: image.url })
 
           if (!upsertError) {
@@ -63,7 +63,7 @@ Deno.serve(async (req) => {
 
     // Fallback: Fetch random image from Supabase
     const { data: randomImage, error: queryError } = await supabaseClient
-      .from('public.images')
+      .from('images')
       .select('url')
       .order('random()')
       .limit(1)

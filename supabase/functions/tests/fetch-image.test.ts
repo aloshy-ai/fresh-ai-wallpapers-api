@@ -22,10 +22,10 @@ const testClientCreation = async () => {
 
   // Test connection by querying the images table
   const { data: table_data, error: table_error } = await client
-    .from('public.images')
+    .from('images')
     .select('*')
     .limit(1)
-  
+
   if (table_error) {
     throw new Error('Invalid Supabase client: ' + table_error.message)
   }
@@ -38,7 +38,7 @@ const testImageStorage = async () => {
 
   // Invoke the fetch-image function
   const { data: functionData, error: funcError } = await client.functions.invoke('fetch-image')
-  
+
   if (funcError) {
     throw new Error('Function invocation failed: ' + funcError.message)
   }
@@ -47,7 +47,7 @@ const testImageStorage = async () => {
 
   // Check if the image exists in the database
   const { data: dbData, error: dbError } = await client
-    .from('public.images')
+    .from('images')
     .select('url')
     .eq('url', functionData.url)
     .single()
@@ -66,20 +66,23 @@ const testDuplicatePrevention = async () => {
 
   // Get initial count
   const { count: initialCount, error: countError } = await client
-    .from('public.images')
+    .from('images')
     .select('*', { count: 'exact', head: true })
 
   if (countError) {
     throw new Error('Initial count query failed: ' + countError.message)
   }
 
-  // Make two consecutive requests
-  const { data: first } = await client.functions.invoke('fetch-image')
-  const { data: second } = await client.functions.invoke('fetch-image')
+  // Make two consecutive requests and properly consume the responses
+  const firstResponse = await client.functions.invoke('fetch-image')
+  const firstData = await firstResponse.data
+  
+  const secondResponse = await client.functions.invoke('fetch-image')
+  const secondData = await secondResponse.data
 
   // Get final count
   const { count: finalCount, error: finalCountError } = await client
-    .from('public.images')
+    .from('images')
     .select('*', { count: 'exact', head: true })
 
   if (finalCountError) {
@@ -100,9 +103,9 @@ const testErrorHandling = async () => {
   // Test with invalid credentials
   const invalidClient = createClient(supabaseUrl, 'invalid_key', options)
   const { data: invalidData, error: invalidError } = await invalidClient
-    .from('public.images')
+    .from('images')
     .select('*')
-  
+
   assert(invalidError !== null, 'Should error with invalid credentials')
 }
 
