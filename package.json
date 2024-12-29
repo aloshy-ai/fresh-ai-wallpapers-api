@@ -11,7 +11,7 @@
     "db:restart": "yarn db:stop && yarn db:start",
     "db:test": "yarn db:start && npx supabase db test",
     "db:reset": "npx supabase db reset",
-    "edge:start": "yarn db:start && nohup npx supabase functions serve > logs/nohup.out 2>&1 &",
+    "edge:start": "mkdir -p logs && yarn db:start && nohup npx supabase functions serve > logs/nohup.out 2>&1 &",
     "edge:status": "echo 'Edge Runtime Status:' && (npx supabase status | grep 'edge_runtime') || echo 'Edge Functions are not running'",
     "edge:logs": "tail -f logs/nohup.out",
     "edge:stop": "pkill -f 'supabase functions serve' || echo 'No edge functions running'"
