@@ -1,0 +1,27 @@
+{
+  "name": "@aloshy-ai/fresh-ai-wallpapers-api",
+  "version": "1.0.0",
+  "description": "Supabase Edge Function serving almost guaranteed fresh images from CivitAI",
+  "main": "index.js",
+  "scripts": {
+    "test": "supabase test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aloshy-ai/fresh-ai-wallpapers-api.git"
+  },
+  "keywords": [
+    "supabase",
+    "civitai",
+    "edge",
+    "api",
+    "wallpaper",
+    "ai"
+  ],
+  "author": "aloshy.🅰🅸",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api/issues"
+  },
+  "homepage": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api#readme"
+}
