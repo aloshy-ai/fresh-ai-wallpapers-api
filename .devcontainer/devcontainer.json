@@ -1,9 +1,8 @@
 {
     "name": "Supabase Edge Functions Dev Container",
-    "postCreateCommand": "npm install",
+    "postCreateCommand": "yarn install",
     "postAttachCommand": {
-        "db": "npx supabase start",
-        "server": "sleep 10 && npx supabase functions serve"
+        "server": "yarn edge:start"
     },
     "customizations": {
         "codespaces": {
@@ -24,4 +23,3 @@
         }
     }
 }
-
