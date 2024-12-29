@@ -4,7 +4,13 @@
   "description": "Supabase Edge Function serving almost guaranteed fresh images from CivitAI",
   "main": "index.js",
   "scripts": {
-    "test": "supabase test"
+    "test": "npx dotenv -- vitest run supabase/tests/",
+    "test:watch": "npx dotenv -- vitest watch supabase/tests/",
+    "db:start": "npx supabase start",
+    "db:stop": "npx supabase stop",
+    "db:restart": "yarn db:stop && yarn db:start",
+    "db:test": "yarn db:start && npx supabase db test",
+    "db:reset": "npx supabase db reset"
   },
   "repository": {
     "type": "git",
@@ -26,5 +32,11 @@
   "homepage": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api#readme",
   "dependencies": {
     "supabase": "^2.1.1"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.47.10",
+    "dotenv": "^16.4.7",
+    "dotenv-cli": "^8.0.0",
+    "vitest": "^2.1.8"
   }
 }
