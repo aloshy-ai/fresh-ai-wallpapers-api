@@ -1,0 +1,27 @@
+{
+    "name": "Supabase Edge Functions Dev Container",
+    "postCreateCommand": "npm install",
+    "postAttachCommand": {
+        "db": "npx supabase start",
+        "server": "sleep 10 && npx supabase functions serve"
+    },
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "supabase/functions/fetch-image/index.ts"
+            ]
+        }
+    },
+    "forwardPorts": [54321, 54323],
+    "portsAttributes": {
+        "54321": {
+            "label": "Supabase Studio",
+            "onAutoForward": "notify"
+        },
+        "54323": {
+            "label": "Edge Functions",
+            "onAutoForward": "notify"
+        }
+    }
+}
+

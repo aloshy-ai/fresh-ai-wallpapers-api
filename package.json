@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api/issues"
   },
-  "homepage": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api#readme"
+  "homepage": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api#readme",
+  "dependencies": {
+    "supabase": "^2.1.1"
+  }
 }
