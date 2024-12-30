@@ -35,13 +35,13 @@
   },
   "homepage": "https://github.com/aloshy-ai/fresh-ai-wallpapers-api#readme",
   "dependencies": {
-    "supabase": "^2.1.1"
+    "@supabase/supabase-js": "^2.47.10"
   },
   "devDependencies": {
-    "@supabase/supabase-js": "^2.47.10",
     "deno": "^2.1.4",
     "dotenv": "^16.4.7",
     "dotenv-cli": "^8.0.0",
+    "supabase": "^2.1.1",
     "vitest": "^2.1.8"
   }
 }
