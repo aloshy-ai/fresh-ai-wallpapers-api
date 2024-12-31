@@ -1,15 +1,9 @@
 {
-    "name": "Supabase Edge Functions Dev Container",
+    "name": "Github Codespaces Container",
     "postCreateCommand": "yarn install",
     "postAttachCommand": {
-        "server": "yarn edge:start"
-    },
-    "customizations": {
-        "codespaces": {
-            "openFiles": [
-                "supabase/functions/fetch-image/index.ts"
-            ]
-        }
+        "server": "npx supabase start",
+        "waitFor": "postCreateCommand"
     },
     "forwardPorts": [54321, 54323],
     "portsAttributes": {
