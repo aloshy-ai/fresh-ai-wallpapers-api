@@ -2,7 +2,7 @@
     "name": "Github Codespaces Container",
     "postCreateCommand": "yarn install",
     "postAttachCommand": {
-        "server": "npx supabase start",
+        "server": "until docker info > /dev/null 2>&1; do echo 'Waiting for Docker...' && sleep 1; done && npx supabase start",
         "waitFor": "postCreateCommand"
     },
     "forwardPorts": [54321, 54323],
